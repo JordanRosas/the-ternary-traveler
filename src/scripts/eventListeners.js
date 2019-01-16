@@ -1,0 +1,1 @@
+//method to save the user interest and post to the database
