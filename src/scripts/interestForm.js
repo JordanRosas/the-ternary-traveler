@@ -17,10 +17,6 @@ const interestForm = {
       <input type = "text" id = "interest_cost" name = "interest_cost" autofocus>
     </fieldset>
     <fieldset>
-      <label for = "interest_review">Review:</label>
-      <input type = "text" id = "interest_review" name = "interest_review" autofocus>
-    </fieldset>
-    <fieldset>
       <label for = "interest_destination">Location:</label>
       <select id = interest_destination></select>
     </fieldset>
