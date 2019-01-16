@@ -1,4 +1,6 @@
 import data from "./data";
+// import domBuilder from "./domBuilder";
+import interestList from "./interestList";
 // import domComponents from "./domComponents"
 
 //method to save the user interest and post to the database
@@ -34,6 +36,8 @@ const eventListeners = {
     editCostButton.setAttribute("id", "editCostSubmit")
     editCostButton.textContent = "Submit"
 
+    $("#editCostSubmit".click(eventListeners.updateCost)
+
     $("#editCost").append(editCost)
     $("#editCost").append(editCostButton)
 
@@ -51,10 +55,32 @@ const eventListeners = {
     editReviewButton.setAttribute("type", " button")
     editReviewButton.setAttribute("id", "editReviewSubmit")
     editReviewButton.textContent = "Submit"
+    
+    
 
     $("#editReview").append(editReviews)
     $("#editReview").append(editReviewButton)
 
+  },
+  updateCost(){
+    let interestName = document.querySelector("#interest_name").value
+    let interestDescription = document.querySelector("#interest_description").value
+    let userEdit = document.querySelector("#reviewCostInput").value
+    let interestReview =  document.querySelector("p")
+    let interestLocation = document.querySelector("#interest_destination").value
+
+    let interestObject = {
+      name:interestName,
+      description:interestDescription,
+      cost:userEdit,
+      review:interestReview,
+      place:interestLocation
+    }
+
+    data.editInterest(interestObject)
+    .then(() =>{
+      interestList.displayNewInterests()
+    })
   }
 }
 export default eventListeners

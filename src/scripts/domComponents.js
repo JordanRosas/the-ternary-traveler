@@ -13,6 +13,7 @@ const domComponents = {
     costEditButton.setAttribute("id", "costEditButton")
     costEditButton.textContent = "Edit"
     costEditButton.addEventListener("click", eventListeners.editCost);
+    
 
     let interestReview = document.createElement("p")
     interestReview.setAttribute("id", "editReview")

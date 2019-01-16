@@ -17,6 +17,16 @@ const data = {
       },
       body: JSON.stringify(interestObject)
     })
-  }
+  },
+  editInterest (id, description) {
+    return fetch(`http://localhost:8088/interests/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(description)
+    })
+
+}
 }
 export default data
