@@ -5,22 +5,26 @@ const interestForm = {
   travelerInputForm(){
     let interestForm = `<article>
     <fieldset>
-      <label for = "contacts_name">Name:</label>
-      <input type = "text" id = "contacts_name" name = "contacts_name" autofocus>
+      <label for = "interest_name">Name:</label>
+      <input type = "text" id = "interest_name" name = "interest_name" autofocus>
     </fieldset>
     <fieldset>
       <label for = "interest_description">Description:</label>
       <input type = "text" id = "interest_description" name = "interest_description" autofocus>
     </fieldset>
     <fieldset>
-      <label for = "contacts_address">Cost:</label>
-      <input type = "text" id = "contacts_address" name = "contacts_address" autofocus>
+      <label for = "interest_cost">Cost:</label>
+      <input type = "text" id = "interest_cost" name = "interest_cost" autofocus>
+    </fieldset>
+    <fieldset>
+      <label for = "interest_review">Review:</label>
+      <input type = "text" id = "interest_review" name = "interest_review" autofocus>
     </fieldset>
     <fieldset>
       <label for = "interest_destination">Location:</label>
       <select id = interest_destination></select>
     </fieldset>
-    <button type = "button" id = "save_contact" value = "Refresh Page" onClick = "history.go(0)">Save</button>
+    <button type = "button" id = "save_interest" value = "Refresh Page" onClick = "history.go(0)">Save</button>
     </article>`
 
     //appends form to the DOM
