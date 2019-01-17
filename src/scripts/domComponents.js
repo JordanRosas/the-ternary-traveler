@@ -1,47 +1,34 @@
 import eventListeners from "./eventListeners"
 const domComponents = {
-  createAndAppend(name, description, cost, review, place){
+  createAndAppend(interestObject){
     let postedInterest = document.createElement("section")
-    postedInterest.setAttribute("id","postedInterest")
+    postedInterest.setAttribute("id", `interest--${interestObject.id}`)
+
     let interestName = document.createElement("h2")
+    interestName.textContent = interestObject.name
+
     let interestDescription = document.createElement("p")
+    interestDescription.textContent = `Description: ${interestObject.description}`
 
     let interestCost = document.createElement("p")
-    interestCost.setAttribute("id", "editCost")
-    let costEditButton = document.createElement("button")
-    costEditButton.setAttribute("type", "button")
-    costEditButton.setAttribute("id", "costEditButton")
-    costEditButton.textContent = "Edit"
-    costEditButton.addEventListener("click", eventListeners.editCost);
-    
+    interestCost.textContent = `Cost:$ ${interestObject.cost}`
+    interestCost.setAttribute("id", `cost--${interestObject.id}`)
 
     let interestReview = document.createElement("p")
-    interestReview.setAttribute("id", "editReview")
-    let reviewEditButton = document.createElement("button")
-    reviewEditButton.setAttribute("id", "reviewEditButton")
-    reviewEditButton.textContent = "Edit"
-    reviewEditButton.addEventListener("click", eventListeners.editReview)
+    interestReview.textContent = `Review: ${interestObject.review}`
+    interestReview.setAttribute("id", `review--${interestObject.id}`)
 
     let interestPlace = document.createElement("p")
+    interestPlace.innerHTML = `Location: ${interestObject.place.name}`
 
-    postedInterest.appendChild(interestName)
-    interestName.textContent = name
+    let costEditButton = document.createElement("button")
+    costEditButton.textContent = "Edit"
 
-    postedInterest.appendChild(interestDescription)
-    interestDescription.textContent = `Desctiption: ${description}`
+    let costDeleteButton = document.createElement("button")
+    costDeleteButton.textContent = "Delete"
 
-    postedInterest.appendChild(interestCost)
-    interestCost.textContent = `Cost: ${cost}`
-    interestCost.appendChild(costEditButton)
 
-    postedInterest.appendChild(interestReview)
-    interestReview.textContent = "Review: "
-    interestReview.appendChild(reviewEditButton)
-
-    postedInterest.appendChild(interestPlace)
-    interestPlace.textContent = `Location: ${place}`
-
-    return postedInterest
+    // return postedInterest
   }
 }
 export default domComponents

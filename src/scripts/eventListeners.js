@@ -27,16 +27,17 @@ const eventListeners = {
   editCost(){
     $("#editCost").empty()
     // let editCostContainer = document.querySelector("#editCost")
-
     let editCost = document.createElement("input")
     editCost.setAttribute("id", "reviewCostInput")
+    editCost.setAttribute("placeholder", "Edit Cost")
+
 
     let editCostButton = document.createElement("button")
     editCostButton.setAttribute("type", " button")
     editCostButton.setAttribute("id", "editCostSubmit")
     editCostButton.textContent = "Submit"
 
-    $("#editCostSubmit".click(eventListeners.updateCost)
+    $("#editCostSubmit").click(eventListeners.updateCost)
 
     $("#editCost").append(editCost)
     $("#editCost").append(editCostButton)
@@ -55,8 +56,6 @@ const eventListeners = {
     editReviewButton.setAttribute("type", " button")
     editReviewButton.setAttribute("id", "editReviewSubmit")
     editReviewButton.textContent = "Submit"
-    
-    
 
     $("#editReview").append(editReviews)
     $("#editReview").append(editReviewButton)
