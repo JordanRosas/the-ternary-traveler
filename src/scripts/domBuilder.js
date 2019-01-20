@@ -1,6 +1,6 @@
-const domBuilder = {
-  appendToDom(interestHTML){
-    $("#output").append(interestHTML)
-  }
-}
-export default domBuilder
+// const domBuilder = {
+//   appendToDom(interestHTML){
+//     $("#output").append(interestHTML)
+//   }
+// }
+// export default domBuilder

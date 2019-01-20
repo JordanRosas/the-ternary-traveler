@@ -7,8 +7,8 @@ import eventListeners from "./eventListeners";
 
 
 interestForm.travelerInputForm();
-interestForm.populateDropdown();
-$("#save_interest").click(eventListeners.postNewInterest)
+interestForm.populatePlaceDropdown();
+$("#interest_submit").click(eventListeners.postNewInterest)
 
 
 interestList.displayNewInterests();

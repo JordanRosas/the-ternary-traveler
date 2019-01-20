@@ -1,44 +1,91 @@
-//build the form where user enters the name, description, cost, review
 import data from "./data"
-
+//build the form where user enters the name, description, cost, review
 const interestForm = {
   travelerInputForm(){
-    let interestForm = `<article>
-    <fieldset>
-      <label for = "interest_name">Name:</label>
-      <input type = "text" id = "interest_name" name = "interest_name" autofocus>
-    </fieldset>
-    <fieldset>
-      <label for = "interest_description">Description:</label>
-      <input type = "text" id = "interest_description" name = "interest_description" autofocus>
-    </fieldset>
-    <fieldset>
-      <label for = "interest_cost">Cost:</label>
-      <input type = "text" id = "interest_cost" name = "interest_cost" autofocus>
-    </fieldset>
-    <fieldset>
-      <label for = "interest_destination">Location:</label>
-      <select id = interest_destination></select>
-    </fieldset>
-    <button type = "button" id = "save_interest" value = "Refresh Page" onClick = "history.go(0)">Save</button>
-    </article>`
+    let formContainer = document.querySelector("#output")
 
-    //appends form to the DOM
-    $("#output").append(interestForm)
+    let interestForm = document.createElement("form")
+
+    let interestNameFormField = document.createElement("fieldset")
+
+    let interestNameLabel = document.createElement("label")
+    interestNameLabel.textContent = "Name"
+    interestNameLabel.setAttribute("for", "interest_name")
+
+    let interestNameInput = document.createElement("input")
+    interestNameInput.setAttribute("id", "interest_name")
+    interestNameInput.setAttribute("name", "interest_name")
+
+    interestNameFormField.appendChild(interestNameLabel)
+    interestNameFormField.appendChild(interestNameInput)
+    interestForm.appendChild(interestNameFormField)
+
+
+    let interestDescriptionFormField = document.createElement("fieldset")
+
+
+    let interestDescriptionLabel = document.createElement("label")
+    interestDescriptionLabel.textContent = "Description"
+    interestDescriptionLabel.setAttribute("for", "interest_description")
+
+    let interestDescriptionInput = document.createElement("input")
+    interestDescriptionInput.setAttribute("id", "interest_description")
+    interestDescriptionInput.setAttribute("name", "interest_description")
+
+    interestDescriptionFormField.appendChild(interestDescriptionLabel)
+    interestDescriptionFormField.appendChild(interestDescriptionInput)
+    interestForm.appendChild(interestDescriptionFormField)
+
+
+    let interestCostFormField = document.createElement("fieldset")
+
+    let interestCostLabel = document.createElement("label")
+    interestCostLabel.setAttribute("for", "interest_cost")
+    interestCostLabel.textContent = "Cost"
+
+    let interestCostInput = document.createElement("input")
+    interestCostInput.setAttribute("id", "interest_cost")
+    interestCostInput.setAttribute("name", "interest_cost")
+
+    interestCostFormField.appendChild(interestCostLabel)
+    interestCostFormField.appendChild(interestCostInput)
+    interestForm.appendChild(interestCostFormField)
+
+
+
+    let interestPlaceFormField = document.createElement("fieldset")
+
+    let interestPlaceLabel = document.createElement("label")
+    interestPlaceLabel.setAttribute("for", "interest_place")
+    interestPlaceLabel.textContent = "Place"
+
+    let interestPlaceSelect = document.createElement("select")
+    interestPlaceSelect.setAttribute("id", "interest_place")
+
+
+    interestPlaceFormField.appendChild(interestPlaceLabel)
+    interestPlaceFormField.appendChild(interestPlaceSelect)
+    interestForm.appendChild(interestPlaceFormField)
+
+    let interestSubmitButton = document.createElement("button")
+    interestSubmitButton.setAttribute("id", "interest_submit")
+    interestSubmitButton.setAttribute("type", "button")
+    interestSubmitButton.setAttribute("value", "Reload Page")
+    interestSubmitButton.setAttribute("onClick", "history.go(0)")
+    interestSubmitButton.textContent = "Save"
+    interestForm.appendChild(interestSubmitButton)
+
+    formContainer.appendChild(interestForm)
   },
-    //method to get the locations from my database.json and populate a dropdown menu
-  populateDropdown(){
-    //fetching the places form database.json as pareses the data into JS
+  populatePlaceDropdown(){
     data.getDestinations()
-
-    .then(allResponse => {
-      let dropDownHtml = " "
-      allResponse.forEach(destination =>{
-        dropDownHtml += `<option>${destination.name}</option>`
-        // console.log(dropDownHtml)
+    .then(allResponses =>{
+      let interestHTML = " "
+      allResponses.forEach(location =>{
+        interestHTML += `<option id="location_option" value=${location.id}>${location.name}</option>`
       })
-      let destinationMenu = document.querySelector("#interest_destination")
-      destinationMenu.innerHTML = dropDownHtml
+      let dropDown = document.querySelector("#interest_place")
+      dropDown.innerHTML = interestHTML
     })
   }
 }

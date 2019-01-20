@@ -1,6 +1,5 @@
-import eventListeners from "./eventListeners"
 const domComponents = {
-  createAndAppend(interestObject){
+  interestBuilder(interestObject){
     let postedInterest = document.createElement("section")
     postedInterest.setAttribute("id", `interest--${interestObject.id}`)
 
@@ -14,21 +13,29 @@ const domComponents = {
     interestCost.textContent = `Cost:$ ${interestObject.cost}`
     interestCost.setAttribute("id", `cost--${interestObject.id}`)
 
-    let interestReview = document.createElement("p")
-    interestReview.textContent = `Review: ${interestObject.review}`
-    interestReview.setAttribute("id", `review--${interestObject.id}`)
-
     let interestPlace = document.createElement("p")
-    interestPlace.innerHTML = `Location: ${interestObject.place.name}`
+    interestPlace.innerHTML = `Location: ${interestObject.place}`
 
-    let costEditButton = document.createElement("button")
-    costEditButton.textContent = "Edit"
+    let editCostButton = document.createElement("button")
+    editCostButton.setAttribute("id", "edit_cost")
+    editCostButton.textContent = "Edit Cost"
+    
 
-    let costDeleteButton = document.createElement("button")
-    costDeleteButton.textContent = "Delete"
+    let addReviewButton = document.createElement("button")
+    addReviewButton.setAttribute("id", "add_review")
+    addReviewButton.textContent = "Add a Review"
 
 
-    // return postedInterest
+
+
+    postedInterest.appendChild(interestName)
+    postedInterest.appendChild(interestDescription)
+    postedInterest.appendChild(interestCost)
+    postedInterest.appendChild(interestPlace)
+    postedInterest.appendChild(editCostButton)
+    postedInterest.appendChild(addReviewButton)
+    // return postedInterest gives the outer most element with the children appended
+    return postedInterest
   }
 }
 export default domComponents

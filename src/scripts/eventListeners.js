@@ -10,19 +10,40 @@ const eventListeners = {
     let interestName = document.querySelector("#interest_name").value
     let interestDescription = document.querySelector("#interest_description").value
     let interestCost = document.querySelector("#interest_cost").value
-    let interestReview =  document.querySelector("p")
-    let interestLocation = document.querySelector("#interest_destination").value
+    let interestLocation = document.querySelector("#interest_place").value
 
     //then create an object out of those values to populate the JSON
     let interestObject = {
       name:interestName,
       description:interestDescription,
       cost:interestCost,
-      review:interestReview,
       place:interestLocation
     }
     //calling the post method passing it the interestObject as the arguement
     data.postNewInterest(interestObject)
+  },
+  updateCost(){
+    let interestName = document.querySelector("#interest_name").value
+    let interestDescription = document.querySelector("#interest_description").value
+    let userEdit = document.querySelector("#reviewCostInput").value
+    let interestReview =  document.querySelector("p").value
+    let interestLocation = document.querySelector("#interest_destination").value
+
+    let interestObject = {
+      name:interestName,
+      description:interestDescription,
+      cost:userEdit,
+      review:interestReview,
+      place:interestLocation
+    }
+
+    let costEditSplit = event.target.id
+    let costSplit = costEditSplit.split("--")[1]
+
+    data.editInterest(costSplit, interestObject)
+    .then(() =>{
+      interestList.displayNewInterests()
+    })
   },
   editCost(){
     $("#editCost").empty()
@@ -61,25 +82,6 @@ const eventListeners = {
     $("#editReview").append(editReviewButton)
 
   },
-  updateCost(){
-    let interestName = document.querySelector("#interest_name").value
-    let interestDescription = document.querySelector("#interest_description").value
-    let userEdit = document.querySelector("#reviewCostInput").value
-    let interestReview =  document.querySelector("p")
-    let interestLocation = document.querySelector("#interest_destination").value
 
-    let interestObject = {
-      name:interestName,
-      description:interestDescription,
-      cost:userEdit,
-      review:interestReview,
-      place:interestLocation
-    }
-
-    data.editInterest(interestObject)
-    .then(() =>{
-      interestList.displayNewInterests()
-    })
-  }
 }
 export default eventListeners

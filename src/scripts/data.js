@@ -17,6 +17,7 @@ const data = {
       },
       body: JSON.stringify(interestObject)
     })
+    .then(r => r.json())
   },
   editInterest (id, description) {
     return fetch(`http://localhost:8088/interests/${id}`, {

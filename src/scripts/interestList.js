@@ -7,9 +7,8 @@ const interestList = {
     .then(allResponses => {
       let interestDocumentFragment = document.createDocumentFragment();
       allResponses.forEach(eachInterest => {
-        let interestHTML = domComponents.createAndAppend(eachInterest.name, eachInterest.description, eachInterest.cost, eachInterest.review, eachInterest.place)
-        console.log(interestHTML)
-        interestDocumentFragment.appendChild(interestHTML)
+        let postedNewInterest = domComponents.interestBuilder(eachInterest)
+        interestDocumentFragment.appendChild(postedNewInterest)
       })
       let interestDocOutput = document.querySelector("#output")
       interestDocOutput.appendChild(interestDocumentFragment)
