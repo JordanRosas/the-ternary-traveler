@@ -8,6 +8,18 @@ const data = {
     return fetch("http://localhost:8088/interests")
     .then(response => response.json())
   },
+  getInterests2(interestId){
+    return fetch(`http://localhost:8088/interests/${interestId}`)
+    .then(response => response.json())
+  },
+  deleteFood(interestId) {
+    return fetch(`http://localhost:8088/interests/${interestId}`, {
+      method: "DELETE",
+      headers: {
+          "Content-Type": "application/json"
+      }
+    })
+  },
   //POST method. user will now post their new interes to the database in the interests section.
   postNewInterest(interestObject){
     fetch("http://localhost:8088/interests", {
